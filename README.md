@@ -1,0 +1,2 @@
+# gomon
+Centralized monitoring console
