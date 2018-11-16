@@ -1,0 +1,24 @@
+{
+  "Server": "",
+  "Port": "8080",
+  "Key": "./ssl/server.key",
+  "Cert": "./ssl/server.crt",
+  "ssl": false,
+  "static_folder": "./static/",
+  "Users": "./config/users",
+  "Title": "gomon",
+  "Menu": [
+    {
+      "Key": "HOME",
+      "Link": "/",
+      "Text": "Home",
+      "Visible": true
+    },
+    {
+      "Key": "LOGOUT",
+      "Link": "/logout",
+      "Text": "Logout",
+      "Visible": false
+    }
+  ]
+}

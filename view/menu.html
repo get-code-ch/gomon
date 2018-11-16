@@ -1,0 +1,7 @@
+{{ define "menu" }}
+{{range .ViewData.Menu}}
+{{ if .Visible }}
+<a href="{{.Link}}">{{.Text}}</a>
+{{ end }}
+{{ end }}
+{{ end }}

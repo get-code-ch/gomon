@@ -1,0 +1,22 @@
+$primary: #1565c0;
+$primaryL: #5e92f3;
+$primaryD: #003c8f;
+$secondary: #d81b60;
+$secondaryL: #ff5c8d;
+$secondaryD: #a00037;
+$panelBackground: #E1E1E1;
+
+$shadowL: rgba(0, 0, 0, 0.12);
+$shadowD: rgba(0, 0, 0, 0.24);
+
+$contentFont: 'Roboto';
+//$titleFont: 'Pacifico';
+//$titleFont: 'Itim';
+$titleFont: 'Kanit';
+
+body {
+  color: $primary;
+  font-family: $contentFont;
+  font-size: small;
+  margin: 3px;
+}
