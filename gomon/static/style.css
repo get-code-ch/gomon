@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto:300|Pacifico|Itim|Kanit");
-
 body {
     color: #1565c0;
     font-family: "Roboto";
@@ -69,7 +68,6 @@ body {
         grid-template-rows: auto minmax(75px, auto) 1fr auto;
         /* Footer */
     }
-
     .layout nav {
         grid-area: menu;
         margin: 0;
@@ -91,7 +89,6 @@ body {
         text-decoration: none;
     }
 }
-
 body {
     color: #1565c0;
     font-family: "Roboto";

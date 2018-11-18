@@ -1,17 +1,18 @@
-package main
+package view
 
 import (
+	"controller/authorize"
 	"net/http"
 	"text/template"
 )
 
-func root(w http.ResponseWriter, r *http.Request) {
+func Root(w http.ResponseWriter, r *http.Request) {
 	var view []string
 
-	session, _ := store.Get(r, userContext)
-	logout := viewData.Menu["LOGOUT"]
+	session, _ := authorize.Store.Get(r, authorize.UserContext)
+	logout := viewData.Menu["9000LOGOUT"]
 	logout.Visible = false
-	viewData.Menu["LOGOUT"] = logout
+	viewData.Menu["9000LOGOUT"] = logout
 
 	if msg, ok := session.Values["message"].(string); ok {
 		viewData.Footer["Message"] = msg
@@ -33,9 +34,9 @@ func root(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	logout = viewData.Menu["LOGOUT"]
+	logout = viewData.Menu["9000LOGOUT"]
 	logout.Visible = true
-	viewData.Menu["LOGOUT"] = logout
+	viewData.Menu["9000LOGOUT"] = logout
 
 	view = append(templateLayout, "view/main.html")
 	t, err := template.ParseFiles(view...)

@@ -1,0 +1,32 @@
+version: '3.2'
+
+services:
+  gomon:
+    build: ./gomon
+    restart: always
+    ports:
+    - target: 8080
+      published: 80
+      protocol: tcp
+      mode: host
+    - target: 443
+      published: 443
+      protocol: tcp
+      mode: host
+
+  db:
+    image: postgres:11.1-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: +60M0n+
+    volumes:
+    - /data/godb:/var/lib/postgresql/data
+    ports:
+    - target: 5432
+      published: 5432
+      protocol: tcp
+      mode: host
+
+
+volumes:
+  godb:

@@ -1,0 +1,12 @@
+{
+  "Server": "",
+  "Port": "8080",
+  "Key": "./ssl/server.key",
+  "Cert": "./ssl/server.crt",
+  "ssl": false,
+  "static_folder": "./static/",
+  "Users": "./config/users",
+  "Title": "gomon",
+  "Timer": 300,
+  "Database": "host=localhost port=5432 user=postgres password=+60M0n+ dbname=gomondb sslmode=disable"
+}

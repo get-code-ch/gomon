@@ -1,12 +1,13 @@
-package main
+package controller
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"types"
 )
 
-type Config struct {
+type TConfig struct {
 	Server       string
 	Port         string
 	Key          string
@@ -15,30 +16,33 @@ type Config struct {
 	StaticFolder string `json:"static_folder"`
 	Users        string
 	Title        string
-	Menu         []Href
+	Timer        int
+	Database     string
+	Menu         []types.Href
 }
 
 const fileConfig = "./config/config.json"
 
-var config Config
+var Config TConfig
 
 func init() {
 	var err error
 
-	config, err = getConfiguration(fileConfig)
+	Config, err = getConfiguration(fileConfig)
 
 	if err != nil {
 		log.Fatal("gomon init error: ", err)
 	}
+
 	return
 
 }
 
-func getConfiguration(file string) (Config, error) {
-	var configuration Config
+func getConfiguration(file string) (TConfig, error) {
+	var configuration TConfig
 	buffer, err := ioutil.ReadFile(file)
 	if err != nil {
-		return Config{}, err
+		return TConfig{}, err
 	}
 	err = json.Unmarshal(buffer, &configuration)
 	return configuration, err
