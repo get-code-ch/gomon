@@ -4,6 +4,7 @@ import (
 	"controller"
 	"database/sql"
 	"encoding/json"
+	_ "github.com/lib/pq"
 	"types"
 )
 

@@ -15,7 +15,7 @@ services:
       mode: host
 
   db:
-    image: postgres:11.1-alpine
+    image: postgres:alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: +60M0n+
@@ -27,6 +27,16 @@ services:
       protocol: tcp
       mode: host
 
+  redis:
+    image: redis:alpine
+    restart: always
+    volumes:
+    - /data/redis:/data
+    ports:
+    - target: 6379
+      published: 6379
+      mode: host
 
 volumes:
   godb:
+  redis:
