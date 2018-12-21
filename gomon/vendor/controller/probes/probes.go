@@ -1,14 +1,15 @@
-package view
+package probes
 
 import (
-	"controller"
 	"controller/authorize"
+	"controller/config"
+	"controller/layout"
 	"html/template"
 	"model/probes"
 	"net/http"
 )
 
-func Probes(w http.ResponseWriter, r *http.Request) {
+func ListProbes(w http.ResponseWriter, r *http.Request) {
 	var view []string
 
 	session, _ := authorize.Store.Get(r, authorize.UserContext)
@@ -17,7 +18,7 @@ func Probes(w http.ResponseWriter, r *http.Request) {
 		session.Values["message"] = "Unauthorized access"
 		session.Save(r, w)
 
-		if controller.Config.Ssl {
+		if config.Config.Ssl {
 			http.Redirect(w, r, "https://"+r.Host+"/", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "http://"+r.Host+"/", http.StatusSeeOther)
@@ -25,7 +26,7 @@ func Probes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	view = append(templateLayout, "view/probes.html")
+	view = append(layout.TemplateLayout, "vendor/view/probes.html", "vendor/view/probeslist.html", "vendor/view/probesform.html")
 	t, err := template.ParseFiles(view...)
 	if err != nil {
 		session.Values["message"] = "probes() - loading template - Internal Server Error: " + err.Error()
@@ -33,11 +34,11 @@ func Probes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	p, _ := probes.GetProbes()
+	p, _ := probes.ReadProbes()
 	data := struct {
-		ViewData ViewData
-		Probes   []map[string]interface{}
-	}{ViewData: viewData, Probes: p}
+		ViewData layout.Layout
+		Probes   []probes.Probe
+	}{ViewData: layout.LayoutData, Probes: p}
 	t.ExecuteTemplate(w, "layout", data)
 	return
 

@@ -1,21 +1,7 @@
-// forms view --> view/admin.html
+// login panel --> view/login.html
 @import "base";
 
-.login {
-  display: grid;
-  width: 300px;
-  height: 200px;
-  background-color: $panelBackground;
-  margin: 80px auto auto auto;
-  border-radius: 1px;
-  box-shadow: 0 3px 6px $shadowD, 0 3px 6px $shadowL;
-  padding: 20px;
-
-  h1 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-family: $titleFont;
-  }
+.adminform {
 
   input[type="password"], input[type="text"] {
     width: 240px;
@@ -34,14 +20,14 @@
     outline: 0;
   }
 
-  input[type="submit"], button {
+  input[type="submit"] {
     display: block;
     background-color: $primary;
     color: white;
     height: 30px;
     width: 200px;
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 30px;
     cursor: pointer;
     position: relative;
     text-align: center;

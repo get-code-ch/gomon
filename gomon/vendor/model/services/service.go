@@ -14,7 +14,7 @@ func GetServices() ([]map[string]interface{}, error) {
 		jsonArray string
 	)
 
-	db, err := sql.Open("postgres", controller.Config.Database)
+	db, err := sql.Open("postgres", controller.Config.Db)
 	if err != nil {
 		return nil, err
 	}

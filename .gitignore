@@ -13,5 +13,3 @@
 .idea/
 gomon/ssl/
 gomon/bin/*
-
-/create_database.sql

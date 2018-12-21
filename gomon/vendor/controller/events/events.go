@@ -1,30 +1,48 @@
 package events
 
 import (
-	"controller"
+	"controller/config"
 	"log"
 	"time"
 )
 
-var EventsMsg chan string
+type Event struct {
+	ticker *time.Ticker
+	msg    chan string
+}
+
+var Msg chan string
+var Evt Event
 
 func init() {
-	EventsMsg = make(chan string, 10)
-	ticker := time.NewTicker(time.Millisecond * 1000 * time.Duration(controller.Config.Timer))
-	go func() {
-		for t := range ticker.C {
-			EventsMsg <- "timer elapsed --> " + t.Format("15:04:05")
-		}
-	}()
+	Msg = make(chan string, 10)
+	Evt = Event{
+		ticker: time.NewTicker(time.Millisecond * 1000 * time.Duration(config.Config.Timer)),
+		msg:    make(chan string, 5),
+	}
+	go Evt.timer()
+	go Evt.onMessage()
 
 	go func() {
 		for {
-			item, ok := <-EventsMsg
-			if !ok {
-				log.Printf("Error eventsMsg...")
-				break
-			}
-			log.Printf("eventsMsg: %v", item)
+			m := <-Msg
+			log.Printf("Message: %v", m)
 		}
 	}()
+}
+
+func (e Event) timer() {
+	for t := range e.ticker.C {
+		mux.Lock()
+		Evt.msg <- "timer elapsed --> " + t.Format("15:04:05")
+		Broadcast <- SocketMessage{Data: "timer elapsed --> " + t.Format("15:04:05"), ErrorCode: 0}
+		mux.Unlock()
+	}
+}
+
+func (e Event) onMessage() {
+	for {
+		m := <-e.msg
+		log.Printf("Message: %v", m)
+	}
 }

@@ -1,10 +1,10 @@
-package controller
+package config
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
-	"types"
+	"os"
 )
 
 type TConfig struct {
@@ -17,21 +17,35 @@ type TConfig struct {
 	Users        string
 	Title        string
 	Timer        int
-	Database     string
-	Menu         []types.Href
+	Db           string
+	RedisSrv     string `json:"Redis_server"`
+	RedisPwd     string `json:"Redis_password"`
+	MongoSrv     string `json:"Mongo_server"`
+	MongoUsr     string `json:"Mongo_username"`
+	MongoPwd     string `json:"Mongo_password"`
+	MongoDb      string `json:"Mongo_database"`
 }
 
-const fileConfig = "./config/config.json"
+const envFileConfig = "GOMON_CONFIG"
 
 var Config TConfig
 
 func init() {
+	// default config file
+	var fileConfig = "./config/config.json"
 	var err error
+
+	fc := os.Getenv(envFileConfig)
+	if fc != "" {
+		fileConfig = fc
+	}
 
 	Config, err = getConfiguration(fileConfig)
 
 	if err != nil {
 		log.Fatal("gomon init error: ", err)
+	} else {
+		log.Printf("gomon init ok, config: %v", Config)
 	}
 
 	return

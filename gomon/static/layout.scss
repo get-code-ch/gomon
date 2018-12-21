@@ -24,6 +24,22 @@
     grid-area: footer;
     color: $secondary;
     margin-bottom: 0.5rem;
+
+    input[type="submit"], button {
+      display: block;
+      background-color: $primary;
+      color: white;
+      height: 30px;
+      width: 200px;
+      margin-left: 50px;
+      margin-top: 20px;
+      cursor: pointer;
+      position: relative;
+      text-align: center;
+      border: none;
+      box-shadow: 0 3px 6px $shadowD, 0 3px 6px $shadowL;
+    }
+
   }
 
   nav {

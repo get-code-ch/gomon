@@ -1,46 +1,35 @@
 package probes
 
 import (
-	"controller"
-	"database/sql"
-	"encoding/json"
-	_ "github.com/lib/pq"
+	"fmt"
+	"github.com/mongodb/mongo-go-driver/bson/objectid"
+	"log"
+	"model"
 )
 
-func GetProbes() ([]map[string]interface{}, error) {
-	var (
-		probes    []map[string]interface{}
-		data      string
-		jsonArray string
-	)
+type Probe struct {
+	Id          objectid.ObjectID `bson:"_id"`
+	Key         string            `bson:"Key"`
+	Name        string            `bson:"Name"`
+	Description string            `bson:"Description"`
+	Command     string            `bson:"Command"`
+}
 
-	db, err := sql.Open("postgres", controller.Config.Database)
+func ReadProbes() ([]Probe, error) {
+	var probes []Probe
+
+	cursor, err := model.MongoDB.Collection("probes").Find(model.Ctx, nil, nil)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("ReadProbes: couldn't not read menu: %v", err)
 	}
-	defer db.Close()
-
-	rows, err := db.Query("select data from probe")
-	defer rows.Close()
-
-	jsonArray = "["
-	row := rows.Next()
-	for row {
-		err := rows.Scan(&data)
+	defer cursor.Close(model.Ctx)
+	for cursor.Next(model.Ctx) {
+		item := Probe{}
+		err := cursor.Decode(&item)
 		if err != nil {
-			return nil, err
+			log.Printf("Error reading menu: %v", err)
 		}
-		row = rows.Next()
-		if row {
-			jsonArray += data + ","
-		} else {
-			jsonArray += data + "]"
-		}
+		probes = append(probes, item)
 	}
-	json.Unmarshal([]byte(jsonArray), &probes)
-
-	if err != nil {
-		probes = nil
-	}
-	return probes, err
+	return probes, nil
 }

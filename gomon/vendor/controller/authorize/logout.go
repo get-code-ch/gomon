@@ -1,7 +1,7 @@
 package authorize
 
 import (
-	"controller"
+	"controller/config"
 	"net/http"
 )
 
@@ -15,7 +15,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Go to home page
-	if controller.Config.Ssl {
+	if config.Config.Ssl {
 		http.Redirect(w, r, "https://"+r.Host+"/", http.StatusSeeOther)
 	} else {
 		http.Redirect(w, r, "http://"+r.Host+"/", http.StatusSeeOther)

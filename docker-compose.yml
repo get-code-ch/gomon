@@ -13,6 +13,24 @@ services:
       published: 443
       protocol: tcp
       mode: host
+    depends_on:
+      - redis
+      - db
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: gomon
+      MONGO_INITDB_ROOT_PASSWORD: 60M0n
+    volumes:
+      - /data/mongodb:/data/db
+    ports:
+      - target: 27017
+        published: 27017
+        protocol: tcp
+        mode: host
 
   db:
     image: postgres:alpine
@@ -32,6 +50,7 @@ services:
     restart: always
     volumes:
     - /data/redis:/data
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "+g0m0n+"]
     ports:
     - target: 6379
       published: 6379

@@ -1,7 +1,7 @@
 package authorize
 
 import (
-	"controller"
+	"controller/config"
 	"controller/events"
 	"golang.org/x/crypto/bcrypt"
 	"io/ioutil"
@@ -24,14 +24,14 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	search := regexp.MustCompile(`(?mi)^(` + usr + `):(.*)$`)
 
 	// Check hashPwd authentication
-	file, err := ioutil.ReadFile(controller.Config.Users)
+	file, err := ioutil.ReadFile(config.Config.Users)
 	if err != nil {
-		events.EventsMsg <- "Authentication failed for: " + usr
+		events.Msg <- "Authentication failed for: " + usr
 
 		session.Values["authenticated"] = false
 		session.Values["message"] = "Internal server error: " + err.Error()
 		session.Save(r, w)
-		if controller.Config.Ssl {
+		if config.Config.Ssl {
 			http.Redirect(w, r, "https://"+r.Host+"/", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "http://"+r.Host+"/", http.StatusSeeOther)
@@ -42,12 +42,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	hashPwd := search.FindSubmatch(file)
 	if hashPwd == nil || hashPwd[2] == nil {
 		// Go to home page
-		events.EventsMsg <- "Authentication failed for: " + usr
+		events.Msg <- "Authentication failed for: " + usr
 
 		session.Values["authenticated"] = false
 		session.Values["message"] = "Invalid Username/Password..."
 		session.Save(r, w)
-		if controller.Config.Ssl {
+		if config.Config.Ssl {
 			http.Redirect(w, r, "https://"+r.Host+"/", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "http://"+r.Host+"/", http.StatusSeeOther)
@@ -57,12 +57,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	if err := bcrypt.CompareHashAndPassword(hashPwd[2], []byte(pwd)); err != nil {
 		// Go to home page
-		events.EventsMsg <- "Authentication failed for: " + usr
+		events.Msg <- "Authentication failed for: " + usr
 
 		session.Values["authenticated"] = false
 		session.Values["message"] = "Invalid Username/Password..."
 		session.Save(r, w)
-		if controller.Config.Ssl {
+		if config.Config.Ssl {
 			http.Redirect(w, r, "https://"+r.Host+"/", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "http://"+r.Host+"/", http.StatusSeeOther)
@@ -77,7 +77,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	session.Save(r, w)
 
 	// Go to home page
-	if controller.Config.Ssl {
+	if config.Config.Ssl {
 		http.Redirect(w, r, "https://"+r.Host+"/", http.StatusSeeOther)
 	} else {
 		http.Redirect(w, r, "http://"+r.Host+"/", http.StatusSeeOther)

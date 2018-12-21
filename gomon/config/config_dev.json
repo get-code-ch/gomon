@@ -7,12 +7,12 @@
   "static_folder": "./static/",
   "Users": "./config/users",
   "Title": "gomon",
-  "Timer": 300,
-  "Db": "host=db port=5432 user=postgres password=+60M0n+ dbname=gomondb sslmode=disable",
-  "Redis_server": "redis",
-  "Redis_password": "+g0m0n+",
-  "Mongo_server": "mongo:27017",
+  "Timer": 60,
+  "Db": "host=localhost port=5432 user=postgres password=+60M0n+ dbname=gomondb sslmode=disable",
+  "Mongo_server": "localhost:27017",
   "Mongo_username": "gomon",
   "Mongo_password": "60M0n",
-  "Mongo_database": "gomondb"
+  "Mongo_database": "gomondb",
+  "Redis_server": "localhost",
+  "Redis_password": "+g0m0n+"
 }
