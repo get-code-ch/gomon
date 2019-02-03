@@ -4,7 +4,7 @@ import (
 	"controller/host"
 	"encoding/json"
 	"github.com/labstack/gommon/log"
-	"github.com/mongodb/mongo-go-driver/bson/objectid"
+	"github.com/mongodb/mongo-go-driver/bson/primitive"
 	"net/http"
 	"os"
 )
@@ -32,9 +32,9 @@ func ReadHost(w http.ResponseWriter, r *http.Request) {
 	param := r.URL.Query()
 	id := param["id"]
 	if len(id) > 0 {
-		h.Id, err = objectid.FromHex(id[0])
+		h.Id, err = primitive.ObjectIDFromHex(id[0])
 		if err != nil {
-			h.Id = objectid.NilObjectID
+			h.Id = primitive.NilObjectID
 		}
 	}
 	hosts, err := h.Get()
@@ -74,7 +74,7 @@ func DeleteHost(w http.ResponseWriter, r *http.Request) {
 	param := r.URL.Query()
 	id := param["id"]
 	if len(id) > 0 {
-		h.Id, err = objectid.FromHex(id[0])
+		h.Id, err = primitive.ObjectIDFromHex(id[0])
 		if err != nil {
 			http.Error(w, "DeleteHost(), Internal Server Error: "+err.Error(), http.StatusInternalServerError)
 		} else {

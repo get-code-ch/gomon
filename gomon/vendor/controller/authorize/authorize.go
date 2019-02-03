@@ -2,7 +2,6 @@ package authorize
 
 import (
 	"controller/config"
-	"controller/events"
 	"encoding/json"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
@@ -10,6 +9,7 @@ import (
 	"github.com/gorilla/sessions"
 	"golang.org/x/crypto/bcrypt"
 	"io/ioutil"
+	"log"
 	"model"
 	"net/http"
 	"regexp"
@@ -38,13 +38,13 @@ func CreateTokenEndpoint(w http.ResponseWriter, r *http.Request) {
 
 	hashPwd := search.FindSubmatch(file)
 	if hashPwd == nil || hashPwd[2] == nil {
-		events.Msg <- "Authentication failed for: " + user.Username
+		log.Printf("Authentication failed for: " + user.Username)
 		json.NewEncoder(w).Encode(model.Exception{Msg: "Login error invalid username/password"})
 		return
 	}
 
 	if err := bcrypt.CompareHashAndPassword(hashPwd[2], []byte(user.Password)); err != nil {
-		events.Msg <- "Authentication failed for: " + user.Username
+		log.Printf("Authentication failed for: " + user.Username)
 		json.NewEncoder(w).Encode(model.Exception{Msg: "Login error invalid username/password"})
 		return
 	}
@@ -87,21 +87,19 @@ func ValidateMiddlewareToken(next http.HandlerFunc) http.HandlerFunc {
 	})
 }
 
-func ValidateMiddlewareCookie(next http.HandlerFunc) http.HandlerFunc {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		session, _ := Store.Get(r, UserContext)
-
-		if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
-			session.Values["message"] = "Unauthorized access"
-			session.Save(r, w)
-
-			if config.Config.Ssl {
-				http.Redirect(w, r, "https://"+r.Host+"/login", http.StatusSeeOther)
-			} else {
-				http.Redirect(w, r, "http://"+r.Host+"/login", http.StatusSeeOther)
-			}
-			return
+func ValidateSocketToken(token string) (bool, error) {
+	t, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("There was an err")
 		}
-		next(w, r)
+		return secret, nil
 	})
+	if err != nil {
+		return false, err
+	}
+	if t.Valid {
+		return true, err
+	} else {
+		return false, fmt.Errorf("Unauthorized access")
+	}
 }

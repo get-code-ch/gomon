@@ -8,7 +8,6 @@
   "Users": "./config/users",
   "Title": "gomon",
   "Timer": 60,
-  "Db": "host=localhost port=5432 user=postgres password=+60M0n+ dbname=gomondb sslmode=disable",
   "Mongo_server": "localhost:27017",
   "Mongo_username": "gomon",
   "Mongo_password": "60M0n",

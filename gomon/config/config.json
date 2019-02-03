@@ -8,7 +8,6 @@
   "Users": "./config/users",
   "Title": "gomon",
   "Timer": 300,
-  "Db": "host=db port=5432 user=postgres password=+60M0n+ dbname=gomondb sslmode=disable",
   "Redis_server": "redis",
   "Redis_password": "+g0m0n+",
   "Mongo_server": "mongo:27017",

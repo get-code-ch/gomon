@@ -1,13 +1,15 @@
 package model
 
-import "github.com/mongodb/mongo-go-driver/bson/objectid"
+import (
+	"github.com/mongodb/mongo-go-driver/bson/primitive"
+)
 
 type Href struct {
-	Id      objectid.ObjectID `json:"id" bson:"_id"`
-	Key     string            `json:"key" bson:"Key"`
-	Link    string            `json:"link" bson:"Link"`
-	Text    string            `json:"text" bson:"Text"`
-	Visible bool              `json:"visible" bson:"Visible"`
+	Id      primitive.ObjectID `json:"id" bson:"_id"`
+	Key     string             `json:"key" bson:"Key"`
+	Link    string             `json:"link" bson:"Link"`
+	Text    string             `json:"text" bson:"Text"`
+	Visible bool               `json:"visible" bson:"Visible"`
 }
 
 type Menu []Href

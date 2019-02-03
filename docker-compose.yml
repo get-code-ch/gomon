@@ -15,7 +15,6 @@ services:
       mode: host
     depends_on:
       - redis
-      - db
       - mongo
 
   mongo:
@@ -31,19 +30,6 @@ services:
         published: 27017
         protocol: tcp
         mode: host
-
-  db:
-    image: postgres:alpine
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: +60M0n+
-    volumes:
-    - /data/godb:/var/lib/postgresql/data
-    ports:
-    - target: 5432
-      published: 5432
-      protocol: tcp
-      mode: host
 
   redis:
     image: redis:alpine

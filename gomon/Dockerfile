@@ -19,8 +19,8 @@ WORKDIR /gomon
 
 COPY config /gomon/config
 COPY static /gomon/static
-COPY view /gomon/view
 COPY ssl /gomon/ssl
+COPY script /gomon/script
 COPY --from=builder /go/bin/gomon /gomon/gomon
 
 ENTRYPOINT ["/gomon/gomon"]

@@ -1,13 +1,10 @@
 package main
 
 import (
-	"controller/admin"
 	"controller/api"
 	"controller/authorize"
 	"controller/config"
 	"controller/events"
-	"controller/host"
-	"controller/probes"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"log"
@@ -17,31 +14,13 @@ import (
 func main() {
 	var err error
 
-	router := mux.NewRouter()
-
-	//handlers.AllowedOrigins([]string{"*"})
-	// login management
-	router.HandleFunc("/login", authorize.Login).Methods(http.MethodPost)
-	router.HandleFunc("/logout", authorize.Logout)
-
-	// Probes management
-	router.HandleFunc("/probes", authorize.ValidateMiddlewareCookie(probes.ListProbes)).Methods(http.MethodGet)
-
-	// Hosts management
-	router.HandleFunc("/hosts", authorize.ValidateMiddlewareCookie(host.ListHosts)).Methods(http.MethodGet)
-	router.HandleFunc("/hosts", authorize.ValidateMiddlewareCookie(host.CreateHosts)).Methods(http.MethodPost)
-
-	// Admin pages
-	router.HandleFunc("/admin", admin.Admin).Methods(http.MethodGet)
+	router := mux.NewRouter().StrictSlash(true)
 
 	// Serving static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir(config.Config.StaticFolder))))
-	router.HandleFunc("/favicon.ico", faviconHandler)
-	router.PathPrefix("/wasm/").Handler(http.StripPrefix("/wasm/", http.FileServer(http.Dir("/home/claude/go/src/wasm/."))))
 
 	// API REST services
 	router.HandleFunc("/api/authenticate", authorize.CreateTokenEndpoint).Methods(http.MethodPost, http.MethodOptions)
-	router.HandleFunc("/api/protected", authorize.ValidateMiddlewareToken(api.Api)).Methods(http.MethodGet, http.MethodOptions)
 	router.HandleFunc("/api/menu", authorize.ValidateMiddlewareToken(api.GetMenu)).Methods(http.MethodGet, http.MethodOptions)
 
 	// Host CRUD
@@ -50,13 +29,31 @@ func main() {
 	router.HandleFunc("/api/host", authorize.ValidateMiddlewareToken(api.UpdateHost)).Methods(http.MethodPut, http.MethodOptions)
 	router.HandleFunc("/api/host", authorize.ValidateMiddlewareToken(api.DeleteHost)).Methods(http.MethodDelete, http.MethodOptions)
 
+	// Probe CRUD
+	router.HandleFunc("/api/probe", authorize.ValidateMiddlewareToken(api.CreateProbe)).Methods(http.MethodPost, http.MethodOptions)
+	router.HandleFunc("/api/probe", authorize.ValidateMiddlewareToken(api.ReadProbe)).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/api/probe", authorize.ValidateMiddlewareToken(api.UpdateProbe)).Methods(http.MethodPut, http.MethodOptions)
+	router.HandleFunc("/api/probe", authorize.ValidateMiddlewareToken(api.DeleteProbe)).Methods(http.MethodDelete, http.MethodOptions)
+
+	// Command CRUD
+	router.HandleFunc("/api/command", authorize.ValidateMiddlewareToken(api.CreateCommand)).Methods(http.MethodPost, http.MethodOptions)
+	router.HandleFunc("/api/command", authorize.ValidateMiddlewareToken(api.ReadCommand)).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/api/command", authorize.ValidateMiddlewareToken(api.UpdateCommand)).Methods(http.MethodPut, http.MethodOptions)
+	router.HandleFunc("/api/command", authorize.ValidateMiddlewareToken(api.DeleteCommand)).Methods(http.MethodDelete, http.MethodOptions)
+
 	// websocket services
-	router.HandleFunc("/ws", authorize.ValidateMiddlewareCookie(events.HandleConnections)).Methods(http.MethodOptions)
 	router.HandleFunc("/socket", events.Upgrader)
 
-	// main page
-	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir(config.Config.StaticFolder+"/client/"))))
-	//router.HandleFunc("/", root.Root)
+	// Catch routes Handle by client app
+	router.HandleFunc("/hosts/", catchAllHandler)
+	router.HandleFunc("/host/", catchAllHandler)
+	router.HandleFunc("/probe/", catchAllHandler)
+	router.HandleFunc("/command/", catchAllHandler)
+	router.HandleFunc("/liveview/", catchAllHandler)
+	router.HandleFunc("/logout/", catchAllHandler)
+
+	// Serving client app
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir(config.Config.StaticFolder + "/client/")))
 
 	// Starting server
 	log.Printf("Starting server %s:%s...", config.Config.Server, config.Config.Port)
@@ -71,8 +68,6 @@ func main() {
 
 }
 
-func faviconHandler(w http.ResponseWriter, r *http.Request) {
-
-	http.ServeFile(w, r, "./static/favicon.ico")
-
+func catchAllHandler(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/", http.StatusPermanentRedirect)
 }
