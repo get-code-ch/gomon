@@ -14,7 +14,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -a -installsuffix cgo -ldfla
 FROM alpine:latest
 MAINTAINER Claude Debieux <claude@get-code.ch>
 
-RUN apk add --no-cache --update bash ca-certificates openssl
+RUN apk add --no-cache --update bash ca-certificates openssl sed iputils
 WORKDIR /gomon
 
 COPY config /gomon/config

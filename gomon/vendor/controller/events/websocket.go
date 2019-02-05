@@ -1,6 +1,5 @@
 package events
 
-import "C"
 import (
 	"controller/authorize"
 	"controller/command"
