@@ -1,0 +1,459 @@
+<?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+    <RESPONSE
+            STATUS="0x0000"
+            MESSAGE='No error'
+    />
+</RIBCL>
+        <?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+<RESPONSE
+        STATUS="0x0000"
+        MESSAGE='No error'
+/>
+</RIBCL>
+        <?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+<RESPONSE
+        STATUS="0x0000"
+        MESSAGE='No error'
+/>
+</RIBCL>
+        <?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+<RESPONSE
+        STATUS="0x0000"
+        MESSAGE='No error'
+/>
+<GET_EMBEDDED_HEALTH_DATA>
+    <FANS>
+        <FAN>
+            <ZONE VALUE="System"/>
+            <LABEL VALUE="Fan 1"/>
+            <STATUS VALUE="OK"/>
+            <SPEED VALUE="5" UNIT="Percentage"/>
+        </FAN>
+        <FAN>
+            <ZONE VALUE="System"/>
+            <LABEL VALUE="Fan 2"/>
+            <STATUS VALUE="OK"/>
+            <SPEED VALUE="9" UNIT="Percentage"/>
+        </FAN>
+    </FANS>
+    <TEMPERATURE>
+        <TEMP>
+            <LABEL VALUE="01-Inlet Ambient"/>
+            <LOCATION VALUE="Ambient"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="21" UNIT="Celsius"/>
+            <CAUTION VALUE="42" UNIT="Celsius"/>
+            <CRITICAL VALUE="46" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="02-CPU"/>
+            <LOCATION VALUE="CPU"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="40" UNIT="Celsius"/>
+            <CAUTION VALUE="70" UNIT="Celsius"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="03-P1 DIMM 1-4"/>
+            <LOCATION VALUE="Memory"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="44" UNIT="Celsius"/>
+            <CAUTION VALUE="87" UNIT="Celsius"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="04-HD Max"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="35" UNIT="Celsius"/>
+            <CAUTION VALUE="60" UNIT="Celsius"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="05-Chipset"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="48" UNIT="Celsius"/>
+            <CAUTION VALUE="105" UNIT="Celsius"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="06-Chipset Zone"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="42" UNIT="Celsius"/>
+            <CAUTION VALUE="75" UNIT="Celsius"/>
+            <CRITICAL VALUE="80" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="07-P/S 1"/>
+            <LOCATION VALUE="Power Supply"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="08-P/S 2"/>
+            <LOCATION VALUE="Power Supply"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="09-VR P1"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="53" UNIT="Celsius"/>
+            <CAUTION VALUE="115" UNIT="Celsius"/>
+            <CRITICAL VALUE="120" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="10-VR P1Mem Zone"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="11-Supercap Max"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="12-iLO Zone"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="37" UNIT="Celsius"/>
+            <CAUTION VALUE="90" UNIT="Celsius"/>
+            <CRITICAL VALUE="95" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="13-PCI 1"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="14-PCI 2"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="15-PCI 3"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="16-PCI 4"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="17-PCI 1 Zone"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="33" UNIT="Celsius"/>
+            <CAUTION VALUE="60" UNIT="Celsius"/>
+            <CRITICAL VALUE="65" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="18-PCI 2 Zone"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="33" UNIT="Celsius"/>
+            <CAUTION VALUE="60" UNIT="Celsius"/>
+            <CRITICAL VALUE="65" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="19-PCI 3 Zone"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="36" UNIT="Celsius"/>
+            <CAUTION VALUE="55" UNIT="Celsius"/>
+            <CRITICAL VALUE="60" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="20-PCI 4 Zone"/>
+            <LOCATION VALUE="I/O Board"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="38" UNIT="Celsius"/>
+            <CAUTION VALUE="55" UNIT="Celsius"/>
+            <CRITICAL VALUE="60" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="21-LOM Zone"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="48" UNIT="Celsius"/>
+            <CAUTION VALUE="75" UNIT="Celsius"/>
+            <CRITICAL VALUE="80" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="22-LOM Zone"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="OK"/>
+            <CURRENTREADING VALUE="45" UNIT="Celsius"/>
+            <CAUTION VALUE="75" UNIT="Celsius"/>
+            <CRITICAL VALUE="80" UNIT="Celsius"/>
+        </TEMP>
+        <TEMP>
+            <LABEL VALUE="23-LOM"/>
+            <LOCATION VALUE="System"/>
+            <STATUS VALUE="Not Installed"/>
+            <CURRENTREADING VALUE="N/A"/>
+            <CAUTION VALUE="N/A"/>
+            <CRITICAL VALUE="N/A"/>
+        </TEMP>
+    </TEMPERATURE>
+    <POWER_SUPPLIES>
+        <POWER_SUPPLY_SUMMARY>
+            <PRESENT_POWER_READING VALUE="0 Watts"/>
+            <POWER_MANAGEMENT_CONTROLLER_FIRMWARE_VERSION VALUE="N/A"/>
+            <HP_POWER_DISCOVERY_SERVICES_REDUNDANCY_STATUS VALUE="N/A"/>
+            <HIGH_EFFICIENCY_MODE VALUE="N/A"/>
+        </POWER_SUPPLY_SUMMARY>
+        <SUPPLY>
+            <LABEL VALUE="Power Supply 1"/>
+            <PRESENT VALUE="Yes"/>
+            <STATUS VALUE="Good, In Use"/>
+            <PDS VALUE="No"/>
+            <HOTPLUG_CAPABLE VALUE="No"/>
+            <MODEL VALUE="                                "/>
+            <SPARE VALUE="Unknown"/>
+            <SERIAL_NUMBER VALUE="                "/>
+            <CAPACITY VALUE="0 Watts"/>
+            <FIRMWARE_VERSION VALUE="N/A"/>
+        </SUPPLY>
+    </POWER_SUPPLIES>
+    <VRM>
+    </VRM>
+    <PROCESSORS>
+        <PROCESSOR>
+            <LABEL VALUE="Proc 1"/>
+            <NAME VALUE="Intel(R) Xeon(R) CPU E3-1220 v3 @ 3.10GHz       "/>
+            <STATUS VALUE="OK"/>
+            <SPEED VALUE="3100 MHz"/>
+            <EXECUTION_TECHNOLOGY VALUE="4/4 cores; 4 threads"/>
+            <MEMORY_TECHNOLOGY VALUE="64-bit Capable"/>
+            <INTERNAL_L1_CACHE VALUE="128 KB"/>
+            <INTERNAL_L2_CACHE VALUE="1024 KB"/>
+            <INTERNAL_L3_CACHE VALUE="8192 KB"/>
+        </PROCESSOR>
+    </PROCESSORS>
+    <MEMORY>
+        <ADVANCED_MEMORY_PROTECTION>
+            <AMP_MODE_STATUS VALUE="Advanced ECC"/>
+            <CONFIGURED_AMP_MODE VALUE="Advanced ECC"/>
+            <AVAILABLE_AMP_MODES VALUE="Advanced ECC"/>
+        </ADVANCED_MEMORY_PROTECTION>
+        <MEMORY_DETAILS_SUMMARY>
+            <CPU_1>
+                <NUMBER_OF_SOCKETS VALUE="4"/>
+                <TOTAL_MEMORY_SIZE VALUE="32 GB"/>
+                <OPERATING_FREQUENCY VALUE="1600 MHz"/>
+                <OPERATING_VOLTAGE VALUE="1.50 v"/>
+            </CPU_1>
+        </MEMORY_DETAILS_SUMMARY>
+        <MEMORY_DETAILS>
+            <CPU_1>
+                <SOCKET VALUE="1"/>
+                <STATUS VALUE="Good, In Use"/>
+                <HP_SMART_MEMORY VALUE="No"/>
+                <PART NUMBER="N/A"/>
+                <TYPE VALUE="DIMM DDR3"/>
+                <SIZE VALUE="8192 MB"/>
+                <FREQUENCY VALUE="1600 MHz"/>
+                <MINIMUM_VOLTAGE VALUE="1.50 v"/>
+                <RANKS VALUE="2"/>
+                <TECHNOLOGY VALUE="UDIMM"/>
+            </CPU_1>
+            <CPU_1>
+                <SOCKET VALUE="2"/>
+                <STATUS VALUE="Good, In Use"/>
+                <HP_SMART_MEMORY VALUE="No"/>
+                <PART NUMBER="N/A"/>
+                <TYPE VALUE="DIMM DDR3"/>
+                <SIZE VALUE="8192 MB"/>
+                <FREQUENCY VALUE="1600 MHz"/>
+                <MINIMUM_VOLTAGE VALUE="1.50 v"/>
+                <RANKS VALUE="2"/>
+                <TECHNOLOGY VALUE="UDIMM"/>
+            </CPU_1>
+            <CPU_1>
+                <SOCKET VALUE="3"/>
+                <STATUS VALUE="Good, In Use"/>
+                <HP_SMART_MEMORY VALUE="No"/>
+                <PART NUMBER="N/A"/>
+                <TYPE VALUE="DIMM DDR3"/>
+                <SIZE VALUE="8192 MB"/>
+                <FREQUENCY VALUE="1600 MHz"/>
+                <MINIMUM_VOLTAGE VALUE="1.50 v"/>
+                <RANKS VALUE="2"/>
+                <TECHNOLOGY VALUE="UDIMM"/>
+            </CPU_1>
+            <CPU_1>
+                <SOCKET VALUE="4"/>
+                <STATUS VALUE="Good, In Use"/>
+                <HP_SMART_MEMORY VALUE="No"/>
+                <PART NUMBER="N/A"/>
+                <TYPE VALUE="DIMM DDR3"/>
+                <SIZE VALUE="8192 MB"/>
+                <FREQUENCY VALUE="1600 MHz"/>
+                <MINIMUM_VOLTAGE VALUE="1.50 v"/>
+                <RANKS VALUE="2"/>
+                <TECHNOLOGY VALUE="UDIMM"/>
+            </CPU_1>
+        </MEMORY_DETAILS>
+    </MEMORY>
+    <NIC_INFORMATION>
+        <NIC>
+            <NETWORK_PORT VALUE="Port 1"/>
+            <PORT_DESCRIPTION VALUE="HP Ethernet 1Gb 2-port 332i Adapter"/>
+            <MAC_ADDRESS VALUE="10:60:4b:ee:39:08"/>
+            <IP_ADDRESS VALUE="192.168.10.14"/>
+            <STATUS VALUE="OK"/>
+        </NIC>
+        <NIC>
+            <NETWORK_PORT VALUE="Port 2"/>
+            <PORT_DESCRIPTION VALUE="HP Ethernet 1Gb 2-port 332i Adapter"/>
+            <MAC_ADDRESS VALUE="10:60:4b:ee:39:09"/>
+            <IP_ADDRESS VALUE="N/A"/>
+            <STATUS VALUE="Other"/>
+        </NIC>
+        <iLO>
+            <NETWORK_PORT VALUE="iLO Dedicated Network Port"/>
+            <PORT_DESCRIPTION VALUE="iLO Dedicated Network Port"/>
+            <MAC_ADDRESS VALUE="10:60:4b:ee:39:0a"/>
+            <IP_ADDRESS VALUE="192.168.10.254"/>
+            <STATUS VALUE="OK"/>
+        </iLO>
+    </NIC_INFORMATION>
+    <STORAGE>
+        <CONTROLLER>
+            <LABEL VALUE="Controller on System Board"/>
+            <STATUS VALUE="OK"/>
+            <CONTROLLER_STATUS VALUE="OK"/>
+            <SERIAL_NUMBER VALUE="N/A"/>
+            <MODEL VALUE="HP Dynamic Smart Array B120i RAID Controller"/>
+            <FW_VERSION VALUE="5.00"/>
+            <CACHE_MODULE_STATUS VALUE="OK"/>
+            <CACHE_MODULE_SERIAL_NUM VALUE="N/A"/>
+            <CACHE_MODULE_MEMORY VALUE="65536 KB"/>
+            <DRIVE_ENCLOSURE>
+                <LABEL VALUE="Port 1I Box 1"/>
+                <STATUS VALUE="OK"/>
+                <DRIVE_BAY VALUE="04"/>
+            </DRIVE_ENCLOSURE>
+            <LOGICAL_DRIVE>
+                <LABEL VALUE="01"/>
+                <STATUS VALUE="OK"/>
+                <CAPACITY VALUE="1862 GB"/>
+                <FAULT_TOLERANCE VALUE="RAID 1/RAID 1+0"/>
+                <ENCRYPTION_STATUS VALUE="Not Encrypted"/>
+                <PHYSICAL_DRIVE>
+                    <LABEL VALUE="Port 1I Box 1 Bay 1"/>
+                    <STATUS VALUE="OK"/>
+                    <SERIAL_NUMBER VALUE="WCAY01297604"/>
+                    <MODEL VALUE="MB2000GCQDD"/>
+                    <CAPACITY VALUE="1863 GB"/>
+                    <LOCATION VALUE="Port 1I Box 1 Bay 1"/>
+                    <DRIVE_CONFIGURATION VALUE="Configured"/>
+                    <ENCRYPTION_STATUS VALUE="Not Encrypted"/>
+                </PHYSICAL_DRIVE>
+                <PHYSICAL_DRIVE>
+                    <LABEL VALUE="Port 1I Box 1 Bay 2"/>
+                    <STATUS VALUE="OK"/>
+                    <SERIAL_NUMBER VALUE="WCAY01299028"/>
+                    <MODEL VALUE="MB2000GCQDD"/>
+                    <CAPACITY VALUE="1863 GB"/>
+                    <LOCATION VALUE="Port 1I Box 1 Bay 2"/>
+                    <DRIVE_CONFIGURATION VALUE="Configured"/>
+                    <ENCRYPTION_STATUS VALUE="Not Encrypted"/>
+                </PHYSICAL_DRIVE>
+            </LOGICAL_DRIVE>
+        </CONTROLLER>
+    </STORAGE>
+    <FIRMWARE_INFORMATION>
+        <INDEX_1>
+            <FIRMWARE_NAME VALUE="HP ProLiant System ROM"/>
+            <FIRMWARE_VERSION VALUE="08/30/2013"/>
+        </INDEX_1>
+        <INDEX_2>
+            <FIRMWARE_NAME VALUE="HP ProLiant System ROM - Backup"/>
+            <FIRMWARE_VERSION VALUE="05/23/2013"/>
+        </INDEX_2>
+        <INDEX_3>
+            <FIRMWARE_NAME VALUE="HP ProLiant System ROM Bootblock"/>
+            <FIRMWARE_VERSION VALUE="02/04/2012"/>
+        </INDEX_3>
+        <INDEX_4>
+            <FIRMWARE_NAME VALUE="iLO"/>
+            <FIRMWARE_VERSION VALUE="1.30 Jul 18 2013"/>
+        </INDEX_4>
+        <INDEX_5>
+            <FIRMWARE_NAME VALUE="System Programmable Logic Device"/>
+            <FIRMWARE_VERSION VALUE="Version 0x05"/>
+        </INDEX_5>
+        <INDEX_6>
+            <FIRMWARE_NAME VALUE="Server Platform Services (SPS) Firmware"/>
+            <FIRMWARE_VERSION VALUE="3.0.4.A4.8"/>
+        </INDEX_6>
+        <INDEX_7>
+            <FIRMWARE_NAME VALUE="HP Dynamic Smart Array B120i RAID Controller"/>
+            <FIRMWARE_VERSION VALUE="5.00"/>
+        </INDEX_7>
+    </FIRMWARE_INFORMATION>
+    <HEALTH_AT_A_GLANCE>
+        <BIOS_HARDWARE STATUS="OK"/>
+        <FANS STATUS="OK"/>
+        <TEMPERATURE STATUS="OK"/>
+        <POWER_SUPPLIES STATUS="OK"/>
+        <PROCESSOR STATUS="OK"/>
+        <MEMORY STATUS="OK"/>
+        <NETWORK STATUS="OK"/>
+        <STORAGE STATUS="OK"/>
+    </HEALTH_AT_A_GLANCE>
+</GET_EMBEDDED_HEALTH_DATA>
+</RIBCL>
+        <?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+<RESPONSE
+        STATUS="0x0000"
+        MESSAGE='No error'
+/>
+</RIBCL>
+        <?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+<RESPONSE
+        STATUS="0x0000"
+        MESSAGE='No error'
+/>
+</RIBCL>
+        <?xml version="1.0"?>
+<RIBCL VERSION="2.23">
+<RESPONSE
+        STATUS="0x0000"
+        MESSAGE='No error'
+/>
+</RIBCL>

@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
-if [ $# -eq 1 ]
+if [ $# -eq 2 ]
     then
-        echo "OK: Hello $1"
-        exit 0
+        if [ "$2" = "" ]
+            then
+                echo "WARNING: Hello $1 no password"
+                exit 0
+            else
+                echo "OK: Hello $1 your password is $2"
+                exit 0
+            fi
     else
         echo "CRITICAL: Error wrong number of arguments"
         exit 1

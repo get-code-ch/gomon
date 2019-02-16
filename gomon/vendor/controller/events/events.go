@@ -59,6 +59,7 @@ func init() {
 			go Workers[p.Id].Timer()
 		}
 	}
+
 }
 
 func (w Worker) Stop() {

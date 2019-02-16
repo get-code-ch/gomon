@@ -16,13 +16,6 @@ type Command struct {
 	Locked      bool               `json:"locked,omitempty"`
 }
 
-type Controller interface {
-	Get()
-	Post()
-	Delete()
-	Put()
-}
-
 func (c *Command) Get() ([]Command, error) {
 
 	var (

@@ -31,6 +31,12 @@ func (w Worker) Bash(cmd command.Command) {
 	c := r.ReplaceAllString(cmd.Command, h[0].IP)
 	r = regexp.MustCompile(`(?mi)~hostname~`)
 	c = r.ReplaceAllString(c, h[0].Name)
+	r = regexp.MustCompile(`(?mi)~username~`)
+	c = r.ReplaceAllString(c, w.Probe.Username)
+	r = regexp.MustCompile(`(?mi)~password~`)
+	pwd, _ := w.Probe.GetSecret()
+	c = r.ReplaceAllString(c, pwd)
+	w.Probe.Password = ""
 
 	e := exec.Command("sh", "-c", c)
 	cmdOutput := &bytes.Buffer{}
@@ -65,6 +71,9 @@ func (w Worker) Bash(cmd command.Command) {
 
 	w.Probe.State = hst.State
 	w.Probe.Result = hst.Message
+	if hst.Metric != "" {
+		w.Probe.Result += " | " + hst.Metric
+	}
 	w.Probe.Last = time.Now()
 	w.Probe.Next = time.Now().Add(time.Second * time.Duration(w.Probe.Interval))
 	// Updating Probe

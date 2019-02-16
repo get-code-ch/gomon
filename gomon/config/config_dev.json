@@ -11,7 +11,7 @@
   "Mongo_server": "localhost:27017",
   "Mongo_username": "gomon",
   "Mongo_password": "60M0n",
-  "Mongo_database": "gomondb",
+  "Mongo_database": "gomondb_dev",
   "Redis_server": "localhost",
   "Redis_password": "+g0m0n+"
 }

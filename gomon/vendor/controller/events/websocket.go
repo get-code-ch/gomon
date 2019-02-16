@@ -151,9 +151,9 @@ func broadcast() {
 		msg := <-Broadcast
 		for client, key := range clients {
 			if authClients[key] {
-				Mux.Lock()
 				log.Printf("%v", key)
 				m := SocketMessage{msg.Action, msg.Object, msg.Data, msg.ErrorCode, msg.Error, key, "", ""}
+				Mux.Lock()
 				err := client.WriteJSON(m)
 				Mux.Unlock()
 				if err != nil {
@@ -219,6 +219,7 @@ func handleProbeMessage(msg SocketMessage, sc SocketChannel) {
 			go Workers[p.Id].Timer()
 		}
 	case "UPDATE":
+		Workers[p.Id].Ticker.Stop()
 		if p.Interval < 1 {
 			p.Interval = 99999
 		}
@@ -238,7 +239,6 @@ func handleProbeMessage(msg SocketMessage, sc SocketChannel) {
 				Ticker: time.NewTicker(time.Millisecond * 1000 * time.Duration(p.Interval)),
 				Probe:  p,
 			}
-			Workers[p.Id].Ticker.Stop()
 			Workers[p.Id] = w
 			go Workers[p.Id].Timer()
 		}

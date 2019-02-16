@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--         RIBCL Sample Script for HP Lights-Out Products          -->
+<!--Copyright (c) 2012 Hewlett-Packard Development Company, L.P.     -->
+
+<!-- Description:  This is a sample XML script to retrieve health    -->
+<!--               information of the server.                        -->
+
+<!-- NOTE:  You will need to replace the USER_LOGIN and PASSWORD     -->
+<!--        values with values that are appropriate for your         -->
+<!--        environment.                                             -->
+
+<!--        You might need to tailor this script for the firmware    -->
+<!--        running on your Lights-Out device according to the       -->
+<!--        information in "Firmware support infomation" comment(s). -->
+
+<!--        Use CPQLOCFG.EXE ver 4.00 or greater with this script    -->
+
+<!--        This script was written for iLO 4 firmware version 1.01  -->
+<!--        release.                                                 -->
+
+<!--        See "HP Integrated Lights-Out Management Processor       -->
+<!--        Scripting and Command Line Resource Guide" for more      -->
+<!--        information on scripting and the syntax of the RIBCL     -->
+<!--        XML.                                                     -->
+
+<!--        Firmware support information for this script:            -->
+<!--            iLO 4 - All versions.                                -->
+<!--            iLO 3 - All versions.                                -->
+<!--            iLO 2 - Version 1.10 or later.                       -->
+
+<RIBCL VERSION="2.23">
+    <LOGIN USER_LOGIN="~username~" PASSWORD="~password~">
+        <SERVER_INFO MODE="read">
+            <!-- <GET_SERVER_NAME /> -->
+            <GET_EMBEDDED_HEALTH/>
+        </SERVER_INFO>
+    </LOGIN>
+</RIBCL>
+
