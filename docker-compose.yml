@@ -16,6 +16,14 @@ services:
     depends_on:
       - redis
       - mongo
+      - frontend
+    volumes:
+      - /data/gomon-frontend:/gomon-frontend
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - /data/gomon-frontend:/gomon-frontend
 
   mongo:
     image: mongo
@@ -45,3 +53,4 @@ services:
 volumes:
   godb:
   redis:
+  gomon-frontend:

@@ -11,6 +11,7 @@ RUN go get -d -v
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -a -installsuffix cgo -ldflags="-w -s" -o /go/bin/gomon
 
 
+
 FROM alpine:latest
 MAINTAINER Claude Debieux <claude@get-code.ch>
 
@@ -18,7 +19,8 @@ RUN apk add --no-cache --update bash ca-certificates openssl sed iputils
 WORKDIR /gomon
 
 COPY config /gomon/config
-COPY static /gomon/static
+# Frontend is build from github repository
+# COPY static /gomon/static
 COPY ssl /gomon/ssl
 COPY script /gomon/script
 COPY --from=builder /go/bin/gomon /gomon/gomon

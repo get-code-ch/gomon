@@ -14,6 +14,7 @@ type TConfig struct {
 	Cert         string
 	Ssl          bool
 	StaticFolder string `json:"static_folder"`
+	AppFolder    string `json:"app_folder"`
 	Users        string
 	Title        string
 	Timer        int

@@ -53,7 +53,7 @@ func main() {
 	router.HandleFunc("/logout/", catchAllHandler)
 
 	// Serving client app
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir(config.Config.StaticFolder + "/client/")))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir(config.Config.AppFolder)))
 
 	// Starting server
 	log.Printf("Starting server %s:%s...", config.Config.Server, config.Config.Port)

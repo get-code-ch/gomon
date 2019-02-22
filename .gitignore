@@ -13,3 +13,4 @@
 .idea/
 gomon/ssl/
 gomon/bin/*
+/gomon/static/client/

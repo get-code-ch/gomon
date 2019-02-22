@@ -5,6 +5,7 @@ import (
 	"controller/config"
 	"fmt"
 	"github.com/mongodb/mongo-go-driver/mongo"
+	"github.com/mongodb/mongo-go-driver/mongo/options"
 	"log"
 )
 
@@ -39,7 +40,7 @@ func init() {
 		Ctx.Value(databaseKey),
 	)
 
-	client, err := mongo.NewClient(uri)
+	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 	if err != nil {
 		log.Fatal("Error connecting Database: %v", err)
 	}

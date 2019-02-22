@@ -5,6 +5,7 @@
   "Cert": "./ssl/server.crt",
   "ssl": false,
   "static_folder": "./static/",
+  "app_folder": "/gomon-frontend/",
   "Users": "./config/users",
   "Title": "gomon",
   "Timer": 300,
