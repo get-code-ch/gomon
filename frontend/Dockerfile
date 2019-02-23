@@ -1,7 +1,7 @@
 FROM node:10-alpine as builder
 RUN apk add --no-cache --update git
 
-RUN npm install -g @angular/cli
+#RUN npm install -g @angular/cli
 
 RUN git clone --progress --verbose https://github.com/get-code-ch/gomon-frontend.git
 WORKDIR gomon-frontend

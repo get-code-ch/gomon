@@ -4,7 +4,7 @@ import (
 	"controller/host"
 	"encoding/json"
 	"github.com/labstack/gommon/log"
-	"github.com/mongodb/mongo-go-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"net/http"
 	"os"
 )
